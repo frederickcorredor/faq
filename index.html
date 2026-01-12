@@ -1,313 +1,96 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Centro de Ayuda</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PROM METEOR 2026 | Panel Teleoperadoras</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">PM</div>
+      <div>
+        <div class="brand-title">PROM METEOR 2026</div>
+        <div class="brand-subtitle">Panel interno para teleoperadoras</div>
+      </div>
+    </div>
 
-  <section class="faq-container">
-    <h1>Centro de Ayuda</h1>
+    <div class="topbar-actions">
+      <div class="search-wrap">
+        <input id="globalSearch" type="search" placeholder="Buscar en TODO… (ej: invima, pago, envío, etapa)" autocomplete="off" />
+        <button class="btn ghost" id="clearGlobal">Limpiar</button>
+      </div>
 
-    <input 
-      type="text" 
-      id="searchFaq" 
-      placeholder="Buscar una pregunta..."
-    >
+      <div class="user-chip" id="userChip" title="Cambiar nombre">
+        <span class="dot"></span>
+        <span id="userNameLabel">Sin nombre</span>
+      </div>
+    </div>
+  </header>
+  <button class="menu-toggle">☰ Menú</button>
+  <div class="overlay" id="overlay"></div>
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <nav id="sectionNav" class="nav"></nav>
 
-    <div class="faq-item">
-  <button class="faq-title">¿Esto sí funciona o es otro engaño más?</button>
-  <div class="faq-content">
-    <p>El Tratamiento Zipper Strong está respaldado por el  Registro Sanitario SD 2019-0018103 lo cual  certifica que este producto pasó todos los estándares y estudios de calidad exigidos por el INVIMA, así que puedes tener la absoluta tranquilidad de estás tomando un producto saludable y muy eficiente para la solución de tu problema.</p>
-    <button class="copy-btn">📋 Copiar respuesta</button>
+      <div class="sidebar-foot">
+        <div class="hint">
+          Tips:
+          <ul>
+            <li>Usa el buscador de cada módulo para filtrar rápido.</li>
+            <li>En cada tarjeta puedes copiar el texto completo.</li>
+            <li>En recursos puedes descargar o copiar links.</li>
+          </ul>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <section class="panel">
+        <div class="panel-head">
+          <h1 id="panelTitle">Cargando…</h1>
+          <p id="panelDesc" class="muted">Cargando secciones…</p>
+        </div>
+
+        <div class="panel-toolbar">
+          <input id="sectionSearch" type="search" placeholder="Buscar en esta sección…" autocomplete="off" />
+          <button class="btn ghost" id="clearSection">Limpiar</button>
+        </div>
+
+        <div id="resultsMeta" class="results-meta"></div>
+
+        <div id="cards" class="cards"></div>
+      </section>
+    </main>
   </div>
-</div>
 
-<div class="faq-item">
-  <button class="faq-title">¿No será otra publicidad mentirosa como la anterior?</button>
-  <div class="faq-content">
-    <p>Si revisas nuestras redes sociales y pagina web, te darás cuenta que nuestra mayor publicidad en realidad es los cientos de Testimonios de todas las personas que han consumido este producto. Ahí puedes darte cuenta que no es otra publicidad engañosa, sino la experiencia y el prestigio de un producto que si funciona de verdad.</p>
-    <button class="copy-btn">📋 Copiar respuesta</button>
-  </div>
-</div>
+  <!-- Modal simple para ver imágenes/videos/audios -->
+  <dialog id="mediaModal" class="modal">
+    <div class="modal-head">
+      <div id="modalTitle" class="modal-title">Recurso</div>
+      <button class="btn ghost" id="closeModal">Cerrar</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </dialog>
 
-<div class="faq-item">
-  <button class="faq-title">¿De verdad tiene registro INVIMA?</button>
-  <div class="faq-content">
-    <p>claro que sí. Puedes verificarlo en la página oficial del Invima https://invima.gov.co/ para tu seguridad y confianza y allí lo buscas con la siguiente referencia SD 2019-0018103</p>
-    <button class="copy-btn">📋 Copiar respuesta</button>
-  </div>
-</div>
-
-<div class="faq-item">
-  <button class="faq-title">¿No me va a hacer daño?</button>
-  <div class="faq-content">
-    <p>Zipper Strong está elaborado con plantas y vitaminas de origen completamente natural lo cual garantiza que no habrá efectos secundarios para tu saluda y es que su fórmula natural es tan saludable, que lo pueden consumir personas diabéticas e hipertensas sin inconveniente.</p>
-    <button class="copy-btn">📋 Copiar respuesta</button>
-  </div>
-</div>
-
-<div class="faq-item">
-  <button class="faq-title">¿Y si me empeora en vez de ayudarme?</button>
-  <div class="faq-content">
-    <p>no es normal que esto ocurra y si llegaras a reaccionar al consumo del Tratamiento Zipper Strong, baja la dosis diaria o suspende su consumo de inmediato y visita a tu médico.</p>
-    <button class="copy-btn">📋 Copiar respuesta</button>
-  </div>
-</div>
-
-<div class="faq-item">
-  <button class="faq-title">¿Por qué este sí y los otros no?</button>
-  <div class="faq-content">
-    <p>la diferencia en sus increíbles beneficios que no logran otros productos que prometen lo mismo, es su fórmula verdaderamente natural y su certificación Invima que garantiza la pureza de sus componentes de origen natural.</p>
-    <button class="copy-btn">📋 Copiar respuesta</button>
-  </div>
-</div>
-
-<div class="faq-item">
-  <button class="faq-title">¿Quién responde si no funciona?</button>
-  <div class="faq-content">
-    <p>no te preocupes que en todo momento estaremos al pendiente de Ti, para revisar tu dosis o la necesidad de complementarte con un Tratamiento Desintoxicante. Pero ten la plena seguridad de que si te va a funcionar, como lo ha hecho en miles de pacientes durante ya más de 12 años en Colombia.</p>
-    <button class="copy-btn">📋 Copiar respuesta</button>
-  </div>
-</div>
-
-<div class="faq-item">
-  <button class="faq-title">¿Y si pago y nunca me llega?</button>
-  <div class="faq-content">
-    <p>eso nunca va a ocurrir porque somos una Empresa legal y certificada, con una trayectoria de más de 12 años en Colombia y nuestro interés es hacer crecer aún más nuestro buen nombre y reputación</p>
-    <button class="copy-btn">📋 Copiar respuesta</button>
-  </div>
-</div>
-
-<div class="faq-item">
-  <button class="faq-title">¿Puedo pagar cuando me lo entreguen?</button>
-  <div class="faq-content">
-    <p>claro que sí, puedes pagar al recibir tu paquete al recibirlo en tu domicilio, pero toma en cuenta que si lo pagas con antelación o abonas al ,menos una parte, vas a recibir como obsequio un MORINGOL de 100 gramos, para fortalecer tu tratamiento y completamente gratis.</p>
-    <button class="copy-btn">📋 Copiar respuesta</button>
-  </div>
-</div>
-
-<div class="faq-item">
-  <button class="faq-title">¿Es discreto el envío? ¿Nadie se va a enterar?</button>
-  <div class="faq-content">
-    <p>La discreción es prioridad y lo entendemos y es por eso que todos nuestros envíos van empacados en bolsas empresariales de las transportadoras, sin logos, nombres o imágenes que muestren o den indicios de su contenido.</p>
-    <button class="copy-btn">📋 Copiar respuesta</button>
-  </div>
-</div>
-
-<div class="faq-item">
-  <button class="faq-title">¿Esto es legal en Colombia?</button>
-  <div class="faq-content">
-    <p>su Registro Sanitario Invima certifica su legalidad en Colombia. No aceptes productos con Registros de la FDA porqué no son legales en Colombia, además de que son contrabando, No arriesgues tu salud.</p>
-    <button class="copy-btn">📋 Copiar respuesta</button>
-  </div>
-</div>
-
-<div class="faq-item">
-  <button class="faq-title">¿Cuánto tiempo tarda en hacer efecto?</button>
-  <div class="faq-content">
-    <p>puedes lograr resultados en vitalidad y energía desde el primer día de Tratamiento y si es la primera vez que consumes el ZIPPER STRONG, debes comenzar con la ETAPA RENACIMIENTO que consiste en 2 tabletas cada 8 horas durante 2 meses y te sorprenderán los resultados y a ella también.</p>
-    <button class="copy-btn">📋 Copiar respuesta</button>
-  </div>
-</div>
-
-<div class="faq-item">
-  <button class="faq-title">¿Me devuelven la plata si no veo resultados?</button>
-  <div class="faq-content">
-    <p>hay una política interna de “Satisfacción o Devolución de tu Dinero” pero esto no suele ocurrir, aunque si tienes esa Garantía que te protege a ti y a tu inversión.</p>
-    <button class="copy-btn">📋 Copiar respuesta</button>
-  </div>
-</div>
-
-<div class="faq-item">
-  <button class="faq-title">¿Tengo acompañamiento o me dejan solo después de pagar?</button>
-  <div class="faq-content">
-    <p>siempre vas a tener durante toda las Etapas de tu Tratamiento, una Asesoría constante y una respuesta inmediata a cualquier de las dudas o situaciones que se te presenten y requieran de nuestra ayuda y compañía… no te preocupes que no estarás solo.</p>
-    <button class="copy-btn">📋 Copiar respuesta</button>
-  </div>
-</div>
-
-<div class="faq-item">
-  <button class="faq-title">¿Es para mi edad o ya es muy tarde?</button>
-  <div class="faq-content">
-    <p>hemos tenido y tenemos en todo momento pacientes que oscilan en edades diversas entre los 18 años y más de 70 los años. A menor edad que corrijas estos problemas, más sencillos y duraderos serán los resultados, pero tarde es que nunca tengas la conciencia y tomes la decisión de darle una solución a tu salud y más si tienes ahora mismo la opción de este Tratamiento Certificado.</p>
-    <button class="copy-btn">📋 Copiar respuesta</button>
-  </div>
-</div>
-
-<div class="faq-item">
-  <button class="faq-title">¿Esto me va a devolver la confianza?</button>
-  <div class="faq-content">
-    <p>una de las razones principales de la creación de este producto, es que además de devolverte la vitalidad, también te permite sentirte más confiado, seguro de entablar relaciones y tu autoestima se ora por los cielos.</p>
-    <button class="copy-btn">📋 Copiar respuesta</button>
-  </div>
-</div>
-
-<div class="faq-item">
-  <button class="faq-title">¿Ahora si voy a funcionar con mi pareja mi pareja?</button>
-  <div class="faq-content">
-    <p>no tengas la menor duda de que esto será así y lo verás desde el primer día. No olvides iniciar con la ETAPA RENACIMIENTO para que los resultados sean más rápidos y eficientes.</p>
-    <button class="copy-btn">📋 Copiar respuesta</button>
-  </div>
-</div>
-
-<div class="faq-item">
-  <button class="faq-title">¿Y si ya he probado de todo y nada me sirvió?</button>
-  <div class="faq-content">
-    <p>Zipper tiene la mejor fórmula patentada en Colombia para mejorar la Potencia, la Energía y la Vitalidad y por supuesto que te va a servir porque es ciencia y experiencia.</p>
-    <button class="copy-btn">📋 Copiar respuesta</button>
-  </div>
-</div>
-
-<div class="faq-item">
-  <button class="faq-title">¿No será peligroso mezclarlo con lo que ya tomo?</button>
-  <div class="faq-content">
-    <p>no considero que sea peligrosos, pero al ser el Zipper Strong un Vasodilatador Sanguíneo, es muy probable que no debas combinarlos con oros productos que alteren tu flujo sanguíneo o tu tensión arterial. Igual siempre debes comenzar con le ETAPA PRESERVACIÓN y podrás tu mismo decidir que tanto aumentas las dosis según lo vayas tolerando.</p>
-    <button class="copy-btn">📋 Copiar respuesta</button>
-  </div>
-</div>
-
-<div class="faq-item">
-  <button class="faq-title">¿Cuántas pastillas me tengo que tomar?</button>
-  <div class="faq-content">
-    <p>Existen 3 Etapas que así mismo son 3 etapas de uso del Zipper Strong y su principal diferencia son la cantidad de tabletas al día según tu necesidad específica y la rapidez con que desees terminar este proceso.</p>
-    <button class="copy-btn">📋 Copiar respuesta</button>
-  </div>
-</div>
-
-<div class="faq-item">
-  <button class="faq-title">¿Cuánto dura el tratamiento de verdad?</button>
-  <div class="faq-content">
-    <p>Tendrás resultados desde el primer día del tratamiento de acuerdo a la dosis que consumas, pero el propósito principal de Zipper Strong es darte una solución definitiva y que no vuelvas a necesitar ningún producto Potenciador nunca más y para eso e l Tratamiento debe ser de mínimo 2 frascos en adelante y de acuerdo a los beneficios que vas notando, tú mismo vas a determinar su continuidad y dosis.</p>
-    <button class="copy-btn">📋 Copiar respuesta</button>
-  </div>
-</div>
-
-<div class="faq-item">
-  <button class="faq-title">¿Por qué hay tanta gente hablando mal de productos como este?</button>
-  <div class="faq-content">
-    <p>Esto ocurre porque la mayoría de los Empresarios de la Salud, en realidad no se esmeran por dar una alta calidad a sus productos, una atención digna, personal y profesional a sus pacientes y solo les interesa el dinero. En RÉNOVEX es diferente porque acá nos importan la gente y queremos que más y más personas sigan los experiencias positivas de nuestros pacientes y puedan también mejorar su vida y bienestar.</p>
-    <button class="copy-btn">📋 Copiar respuesta</button>
-  </div>
-</div>
-
-<div class="faq-item">
-  <button class="faq-title">¿Cómo sé que no están usando mi problema para sacarme plata?</button>
-  <div class="faq-content">
-    <p>La preocupación respuesta rápida de nuestras Asesoras siempre en Línea y la calidad de todos los productos de RÉNOVEX, dan fé que no es el dinero lo que nos mueve, sino un deseo franco de ayudar y servir durante ya más de 12 años en Colombia y eso lo puedes ver en todos los comentarios y testimonios que abunda en la Red.</p>
-    <button class="copy-btn">📋 Copiar respuesta</button>
-  </div>
-</div>
-
-<div class="faq-item">
-  <button class="faq-title">¿Qué contiene exactamente la fórmula?</button>
-  <div class="faq-content">
-    <p>La fórmula científica y natural de ZIPPER STRONG está compuesta y magistralmente balanceada con reconocidas plantas y extractos como lo son Yohimbina, Shilajit, Tribulus, Maca, Taurina y Zinc, además de importantes vitaminas esenciales para el hombre y todo esto es en su totalidad de origen orgánico.</p>
-    <button class="copy-btn">📋 Copiar respuesta</button>
-  </div>
-</div>
-
-<div class="faq-item">
-  <button class="faq-title">¿La fórmula está basada en estudios o evidencia científica?</button>
-  <div class="faq-content">
-    <p>Al estár compuesta por reconocidas plantas, vitaminas y minerales que tienen ya estudios científicos de más de 50 años, la evidencia científica de su beneficios se encuentra con facilidad tan solo con buscar un o todas estas plantas en la Red, además que su Registro Sanitario Invima así lo certifica.</p>
-    <button class="copy-btn">📋 Copiar respuesta</button>
-  </div>
-</div>
-
-<div class="faq-item">
-  <button class="faq-title">¿Tiene ingredientes que puedan interactuar con otros medicamentos?</button>
-  <div class="faq-content">
-    <p>Al ser compuestos completamente naturales, pueden interactuar con la mayoría de los medicamentos, teniendo precaución con fármacos que aumenten la presión sanguínea, mujeres embarazadas y obviamente jampas niños.</p>
-    <button class="copy-btn">📋 Copiar respuesta</button>
-  </div>
-</div>
-
-<div class="faq-item">
-  <button class="faq-title">¿Es natural o tiene químicos sintéticos?</button>
-  <div class="faq-content">
-    <p>Es completamente natural y compuesto por extractos y plantas con estándares de altísima calidad.</p>
-    <button class="copy-btn">📋 Copiar respuesta</button>
-  </div>
-</div>
-
-<div class="faq-item">
-  <button class="faq-title">¿La fórmula está balanceada según la edad y condición del paciente?</button>
-  <div class="faq-content">
-    <p>Regularmente se toma por etapas muy bien definidas, por edad, necesidades, tiempo y otros factores que definen su dosis, tiempo de tratamiento y continuidad en el tiempo.</p>
-    <button class="copy-btn">📋 Copiar respuesta</button>
-  </div>
-</div>
-
-<div class="faq-item">
-  <button class="faq-title">¿Cuánto tiempo tarda en llegarme el envío?</button>
-  <div class="faq-content">
-    <p>En realidad es muy rápido ya que a capitales principales de Colombia no tarda más de 1 o 2 días. Los demás destinos varían en hasta 8 días dependiendo de la complejidad de rutas en el país.</p>
-    <button class="copy-btn">📋 Copiar respuesta</button>
-  </div>
-</div>
-
-<div class="faq-item">
-  <button class="faq-title">¿Puedo pagar contra entrega?</button>
-  <div class="faq-content">
-    <p>¿Siempre vas a tener la posibilidad de pagar al recibir tu pedido, pero si el destino es muy complejo, debes pagar el pedido por adelantado, pero en estos casos te damos un MorinGold completamente gratis y que además te ayudará a desintoxicar tu organismo y hará tu tratamiento aún más eficiente.</p>
-    <button class="copy-btn">📋 Copiar respuesta</button>
-  </div>
-</div>
-
-<div class="faq-item">
-  <button class="faq-title">¿El envío tiene costo o es gratis?</button>
-  <div class="faq-content">
-    <p>Dependiendo del tipo de promoción, lo difícil del destino o el valor de la factura, el pedido puede tener un costo adicional. Pero la buena noticia es que en este año 2026 te lo despacharemos completamente gratis a destinos capitales, pero esto será por poco tiempo, así que aprovecha este ofertón.</p>
-    <button class="copy-btn">📋 Copiar respuesta</button>
-  </div>
-</div>
-
-<div class="faq-item">
-  <button class="faq-title">¿Qué forma de pago aceptan?</button>
-  <div class="faq-content">
-    <p>El medio de pago más común es el pago anticipado o el pago en efectivo al recibir. Te recomendamos mucho el pago en efectivo porqué tienes más seguridad y rapidez de la entrega y además así te podremos un MorinGold completamente gratis y que además te ayudará a desintoxicar tu organismo y hará tu tratamiento aún más eficiente. Si no pagas por adelantado, la forma de pago ya depende completamente de la transportadora y no de nosotros.</p>
-    <button class="copy-btn">📋 Copiar respuesta</button>
-  </div>
-</div>
-
-<div class="faq-item">
-  <button class="faq-title">¿Cuánto tiempo tarda en verse un resultado real?</button>
-  <div class="faq-content">
-    <p>Los resultados se ven desde el primer día que comienzas tu Tratamiento Zipper Strong, sintiendo una mayor energía, concentración, erecciones fáciles y mayor deseo y concentración, pero es claro que mientras más avanzas en el tiempo, así mismo los resultados se hacen más visibles y permanentes.</p>
-    <button class="copy-btn">📋 Copiar respuesta</button>
-  </div>
-</div>
-
-<div class="faq-item">
-  <button class="faq-title">¿Es necesario acompañarlo con hábitos de salud (alimentación/ejercicio)?</button>
-  <div class="faq-content">
-    <p>Los hábitos saludables en alimentación y ejercicio, no son algo que tenga que ver tan solo por tomar el Tratamiento Zipper Strong, sino que deben ser parte de tu vida ahora y siempre y claramente esto va a mejorar los efectos de este y de cualquier otro producto que tomes.</p>
-    <button class="copy-btn">📋 Copiar respuesta</button>
-  </div>
-</div>
-
-<div class="faq-item">
-  <button class="faq-title">¿Puede necesitarse tratamiento por más tiempo?</button>
-  <div class="faq-content">
-    <p>En realidad las dosis, intervalos y tiempo del tratamiento lo terminas decidiendo tú. Ya que muchas personas deciden hacerlo solo por un tiempo determinad y otras optan por involucrar el Tratamiento Zipper Strong de forma más consecutiva, porque les hace sentir más fuertes, vigorosos, potentes y muy concentrados. A la final esa decisión termina siendo solo tuya.</p>
-    <button class="copy-btn">📋 Copiar respuesta</button>
-  </div>
-</div>
-
-<div class="faq-item">
-  <button class="faq-title">¿Es seguro si tengo hipertensión, diabetes u otra condición?</button>
-  <div class="faq-content">
-    <p>La verdad es que el Tratamiento Zipper Strong tiene una fórmula tan saludable y natural, que ha demostrado ampliamente que es seguro en personas con diabetes o hipertensión, pero debes llevar las dosis de forma escalonada y por las 3 Etapas que te damos en las indicaciones al comprarlo.</p>
-    <button class="copy-btn">📋 Copiar respuesta</button>
-  </div>
-</div>
-
-  </section>
+  <!-- Modal para nombre -->
+  <dialog id="nameModal" class="modal">
+    <div class="modal-head">
+      <div class="modal-title">Identificación de teleoperadora</div>
+    </div>
+    <div class="modal-body">
+      <p class="muted" style="margin-top:0">Escribe tu nombre. Se usará automáticamente en los mensajes (ej: “Soy {{ASESORA}}…”) </p>
+      <input id="nameInput" type="text" placeholder="Ej: Laura Gómez" class="name-input" />
+      <div class="name-actions">
+        <button class="btn ghost" id="skipName">Omitir</button>
+        <button class="btn" id="saveName">Guardar</button>
+      </div>
+      <p class="muted" style="margin-bottom:0">Tip: queda guardado en este navegador (localStorage).</p>
+    </div>
+  </dialog>
 
   <script src="script.js"></script>
 </body>
 </html>
-
